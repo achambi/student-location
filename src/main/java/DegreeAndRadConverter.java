@@ -1,3 +1,6 @@
+/**
+ * Degree and radian converter
+ */
 class DegreeAndRadConverter {
     // degrees to radians
     static double Deg2rad(double degrees) {

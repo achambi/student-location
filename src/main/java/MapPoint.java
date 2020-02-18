@@ -16,7 +16,12 @@ class MapPoint {
         return latitude;
     }
 
-    // Earth radius at a given latitude, according to the WGS-84 ellipsoid [m]
+    /**
+     * Earth radius at a given latitude, according to the WGS-84 ellipsoid [m]
+     *
+     * @param lat A latitude point.
+     * @return Radius of Earth at given latitude
+     */
     private double WGS84EarthRadius(double lat) {
         // http://en.wikipedia.org/wiki/Earth_radius
         // Semi-axes of WGS-84 geoidal reference
@@ -31,6 +36,12 @@ class MapPoint {
         return Math.sqrt((an*an + bn*bn)/(ad*ad + bd*bd));
     }
 
+    /**
+     * Create a Bounding Box using a half side of a square.
+     *
+     * @param halfSideInMts Half a side of a square in meters.
+     * @return a {@link BoundingBox} A Bounding Box Instance.
+     */
     BoundingBox createBoundingBox(double halfSideInMts) {
         // Bounding box surrounding the point at given coordinates,
         // assuming local approximation of Earth surface as a sphere

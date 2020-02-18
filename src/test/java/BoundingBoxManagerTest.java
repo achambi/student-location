@@ -8,25 +8,26 @@ import static org.junit.Assert.assertNotNull;
 public class BoundingBoxManagerTest {
 
     private List<BoundingBox> classes;
-    private double halfSideInMts;
 
     @Before
     public void setUp() {
-        halfSideInMts = 10;
-        //Principles of computational geo-location analysis
-        MapPoint point = new MapPoint(34.069140, -118.442689);
+        double halfSideInMts = 10;
+
+        MapPointElement point = new MapPointElement("Principles of computational geo-location analysis",
+                                                    34.069140, -118.442689
+        );
         BoundingBox engineeringClassroom = point.createBoundingBox(halfSideInMts);
 
-        point = new MapPoint(34.069585, -118.441878);
+        point = new MapPointElement("Sedimentary Petrology", 34.069585, -118.441878);
         BoundingBox geologyClassroom = point.createBoundingBox(halfSideInMts);
 
-        point = new MapPoint(34.069742, -118.441312);
+        point = new MapPointElement("Introductory Psychobiology", 34.069742, -118.441312);
         BoundingBox psychologyClassroom = point.createBoundingBox(halfSideInMts);
 
-        point = new MapPoint(34.070223, -118.440193);
+        point = new MapPointElement("Art of Listening", 34.070223, -118.440193);
         BoundingBox musicClassroom = point.createBoundingBox(halfSideInMts);
 
-        point = new MapPoint(34.071528, -118.441211);
+        point = new MapPointElement("Art History", 34.071528, -118.441211);
         BoundingBox humanitiesClassroom = point.createBoundingBox(halfSideInMts);
 
         classes = Arrays.asList(engineeringClassroom,
@@ -41,19 +42,18 @@ public class BoundingBoxManagerTest {
     public void testCalculateExample1() {
         {
 
-            List<MapPoint> students = Arrays.asList(
+            List<MapPointElement> students = Arrays.asList(
                 //john_student - engineering
-                new MapPoint(34.069149, -118.442639),
+                new MapPointElement("John Wilson", 34.069149, -118.442639),
                 //jane_student - geology
-                new MapPoint(34.069601, -118.441862),
+                new MapPointElement("Jane Graham", 34.069601, -118.441862),
                 //pam_student - humanities
-                new MapPoint(34.071513, -118.441181)
+                new MapPointElement("Pam Bam", 34.071513, -118.441181)
             );
 
-            List<MapPoint> mapPointsFound = new BoundingBoxManager(
+            List<MapPointElement> mapPointsFound = new BoundingBoxManager(
                 classes,
-                students,
-                halfSideInMts
+                students
             ).studentsInClasses();
 
             assertNotNull(mapPointsFound);
@@ -67,19 +67,18 @@ public class BoundingBoxManagerTest {
     public void testCalculateExample2() {
         {
 
-            List<MapPoint> students = Arrays.asList(
+            List<MapPointElement> students = Arrays.asList(
                 //john_student - engineering
-                new MapPoint(34.069849, -118.443539),
+                new MapPointElement("John Wilson", 34.069849, -118.443539),
                 //jane_student - geology
-                new MapPoint(34.069901, -118.441562),
+                new MapPointElement("Jane Graham", 34.069901, -118.441562),
                 //pam_student - humanities
-                new MapPoint(34.071523, -118.441171)
+                new MapPointElement("Pam Bam", 34.071523, -118.441171)
             );
 
-            List<MapPoint> mapPointsFound = new BoundingBoxManager(
+            List<MapPointElement> mapPointsFound = new BoundingBoxManager(
                 classes,
-                students,
-                halfSideInMts
+                students
             ).studentsInClasses();
 
             assertNotNull(mapPointsFound);

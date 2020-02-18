@@ -1,11 +1,11 @@
-public class DegreeAndRadConvertor {
+class DegreeAndRadConverter {
     // degrees to radians
-    public static double Deg2rad(double degrees) {
+    static double Deg2rad(double degrees) {
         return Math.PI*degrees/180.0;
     }
 
     // radians to degrees
-    public static double Rad2deg(double radians) {
+    static double Rad2deg(double radians) {
         return 180.0*radians/Math.PI;
     }
 }

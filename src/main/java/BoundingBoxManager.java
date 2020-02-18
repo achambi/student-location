@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoundingBoxManager {
+class BoundingBoxManager {
     private List<BoundingBox> boundingBoxes;
-    private List<MapPoint> mapPoints;
+    private List<MapPointElement> mapPoints;
 
-    public BoundingBoxManager(List<BoundingBox> boundingBoxes, List<MapPoint> mapPoints, double halfSideInMts) {
+    BoundingBoxManager(List<BoundingBox> boundingBoxes, List<MapPointElement> mapPoints) {
         this.boundingBoxes = boundingBoxes;
         this.mapPoints = mapPoints;
     }
 
-    public List<MapPoint> studentsInClasses() {
-        List<MapPoint> mapPointsFound = new ArrayList<>();
+    List<MapPointElement> studentsInClasses() {
+        List<MapPointElement> mapPointsFound = new ArrayList<>();
         for (BoundingBox boundingBox : boundingBoxes) {
-            for (MapPoint mapPoint : mapPoints) {
-                MapPoint mapPointFound = boundingBox.verifyPoint(mapPoint);
+            for (MapPointElement mapPoint : mapPoints) {
+                MapPointElement mapPointFound = boundingBox.verifyPoint(mapPoint);
                 if (mapPointFound != null) {
                     mapPointsFound.add(mapPointFound);
                 }

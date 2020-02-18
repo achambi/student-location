@@ -1,13 +1,13 @@
-public class BoundingBox {
-    public MapPoint minPoint;
-    public MapPoint maxPoint;
+class BoundingBox {
+    private final MapPoint minPoint;
+    private final MapPoint maxPoint;
 
-    public BoundingBox(MapPoint minPoint, MapPoint maxPoint) {
+    BoundingBox(MapPoint minPoint, MapPoint maxPoint) {
         this.minPoint = minPoint;
         this.maxPoint = maxPoint;
     }
 
-    public MapPoint verifyPoint(MapPoint mapPoint) {
+    MapPointElement verifyPoint(MapPointElement mapPoint) {
         if (mapPoint.getLatitude() >= minPoint.getLatitude() &&
             mapPoint.getLatitude() <= maxPoint.getLatitude() &&
             mapPoint.getLongitude() >= minPoint.getLongitude() &&
